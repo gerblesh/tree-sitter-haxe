@@ -330,9 +330,8 @@ const haxe_grammar = {
     ...declarations,
     ...literals,
 
-    comment: ($) => token(choice(seq('//', /.*/), seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'))),
-    // TODO: implement the structures that use these
-    // keyword: ($) => choice('catch', 'do', 'enum', 'for', 'try', 'while'),
+    comment: ($) =>token(choice(seq('//', /.*/), seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'))),
+
     // keywords reserved by the haxe compiler that are not currently used
     reserved_keyword: ($) => choice('operator'),
     identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9]*/,
