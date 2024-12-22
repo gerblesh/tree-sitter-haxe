@@ -9,6 +9,7 @@ module.exports = {
       $.typedef_declaration,
       $.function_declaration,
       $.variable_declaration,
+      $.enum_declaration,
     ),
   _access_identifier: ($) => choice('default', 'null', 'get', 'set', 'dynamic', 'never'),
   access_identifiers: ($) =>
@@ -57,6 +58,13 @@ module.exports = {
         repeat(seq('extends', field('interface_name', $._type_path), optional($.type_params))),
       ),
       field('body', $.block),
+    ),
+
+  enum_declaration: ($) =>
+    seq(
+      'enum',
+      field('name', $._lhs_expression),
+      field('body', $.block)
     ),
 
   typedef_declaration: ($) =>

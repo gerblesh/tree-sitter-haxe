@@ -30,6 +30,11 @@ const haxe_grammar = {
     [$.function_declaration, $.variable_declaration],
     [$._prefixUnaryOperator, $._arithmeticOperator],
     [$._prefixUnaryOperator, $._postfixUnaryOperator],
+    [$.for_statement],
+    [$.try_statement],
+    [$.catch_statement],
+    [$.while_statement],
+    [$.do_while_statement],
   ],
   rules: {
     module: ($) => seq(repeat($.statement)),
@@ -46,6 +51,10 @@ const haxe_grammar = {
           $.package_statement,
           $.declaration,
           $.switch_expression,
+          $.for_statement,
+          $.try_statement,
+          $.while_statement,
+          $.do_while_statement,
           seq($.expression, $._lookback_semicolon),
           $.conditional_statement,
           $.throw_statement,
@@ -148,10 +157,22 @@ const haxe_grammar = {
 
     _parenthesized_expression: ($) => seq('(', repeat1(prec.left($.expression)), ')'),
 
+    for_statement: ($) =>
+      seq(
+        'for',
+        '(',
+        field('range', $.range_expression),
+        ')',
+        field('body', $.statement),
+      ),
+
     range_expression: ($) =>
       prec(
         1,
-        seq($.identifier, 'in', choice(seq($.integer, $._rangeOperator, $.integer), $.identifier)),
+        choice(
+          seq($.identifier, 'in', choice(seq($.integer, $._rangeOperator, $.integer), $.identifier, $.expression)),
+          seq($.pair, 'in', choice($.identifier, $.expression)),
+        )
       ),
 
     expression: ($) =>
@@ -161,7 +182,6 @@ const haxe_grammar = {
         $.runtime_type_check_expression,
         $.cast_expression,
         $.type_trace_expression,
-        $.range_expression,
         $._parenthesized_expression,
         $.switch_expression,
         // simple expression, or chained.
@@ -235,17 +255,53 @@ const haxe_grammar = {
     // arg list is () with any amount of expressions followed by commas
     _arg_list: ($) => seq('(', commaSep($.expression), ')'),
 
-    conditional_statement: ($) =>
+    try_statement: ($) =>
       prec.right(
         1,
         seq(
-          field('name', 'if'),
-          field('arguments_list', $._arg_list),
-          optional($.block),
-          optional(seq(choice('else', 'else if'), $.block)),
+          'try',
+          field('body', $.statement),
+          repeat1(
+            $.catch_statement
+          ),
         ),
       ),
 
+      catch_statement: ($) => 
+        seq('catch',
+          '(',
+          field('arguments_list', $._arg_list),
+          ')',
+          field('body', choice($.statement, $.block)),
+        ),
+
+
+    else_clause: ($) => seq('else', $.statement),
+
+    conditional_statement: ($) => prec.right(seq(
+        'if',
+        field('condition', $._parenthesized_expression),
+        field('body', $.statement),
+        optional(field('else', $.else_clause)),
+      ),
+    ),
+
+    while_statement: ($) => prec.right(seq(
+        'while',
+        field('condition', $._parenthesized_expression),
+        field('body', $.statement),
+      ),
+    ),
+
+    do_while_statement: ($) => prec.right(seq(
+        'do',
+        field('body', choice($.expression, $.block)),
+        'while',
+        field('condition', $._parenthesized_expression),
+        $._semicolon,
+      ),
+    ),
+    
     _call: ($) =>
       prec(
         1,
