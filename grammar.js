@@ -170,7 +170,7 @@ const haxe_grammar = {
       prec(2,
         seq(
           choice($._parenthesized_expression, $.integer),
-          $._rangeOperator,
+          alias($._rangeOperator, $.operator),
           choice($._parenthesized_expression, $.integer),
         )
       ),

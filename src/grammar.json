@@ -881,8 +881,13 @@
             ]
           },
           {
-            "type": "SYMBOL",
-            "name": "_rangeOperator"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_rangeOperator"
+            },
+            "named": true,
+            "value": "operator"
           },
           {
             "type": "CHOICE",
