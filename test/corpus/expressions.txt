@@ -46,8 +46,10 @@ if (true) {
     (block
       (identifier) (operator) (integer)
     )
-    (block
-      (identifier) (operator) (integer)
+    (else_clause
+      (block
+        (identifier) (operator) (integer)
+      )
     )
   )
 )

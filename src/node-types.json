@@ -63,6 +63,10 @@
           "named": true
         },
         {
+          "type": "for_statement",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -95,6 +99,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -112,6 +120,10 @@
         },
         {
           "type": "type_trace_expression",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
@@ -211,6 +223,10 @@
         },
         {
           "type": "preprocessor_statement",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -335,6 +351,10 @@
           },
           {
             "type": "pair",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -505,6 +525,10 @@
         },
         {
           "type": "preprocessor_statement",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -697,6 +721,10 @@
             "named": true
           },
           {
+            "type": "range_expression",
+            "named": true
+          },
+          {
             "type": "return",
             "named": false
           },
@@ -828,6 +856,10 @@
           },
           {
             "type": "preprocessor_statement",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -1067,6 +1099,10 @@
             "named": true
           },
           {
+            "type": "range_expression",
+            "named": true
+          },
+          {
             "type": "return",
             "named": false
           },
@@ -1182,6 +1218,10 @@
           },
           {
             "type": "pair",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -1307,6 +1347,10 @@
             "named": true
           },
           {
+            "type": "range_expression",
+            "named": true
+          },
+          {
             "type": "return",
             "named": false
           },
@@ -1406,6 +1450,10 @@
           },
           {
             "type": "pair",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -1533,6 +1581,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -1612,7 +1664,7 @@
     "fields": {
       "body": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "(",
@@ -1715,6 +1767,10 @@
             "named": true
           },
           {
+            "type": "range_expression",
+            "named": true
+          },
+          {
             "type": "return",
             "named": false
           },
@@ -1759,17 +1815,89 @@
             "named": true
           }
         ]
-      },
-      "range": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "range_expression",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "cast_expression",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pair",
+          "named": true
+        },
+        {
+          "type": "range_expression",
+          "named": true
+        },
+        {
+          "type": "runtime_type_check_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "switch_expression",
+          "named": true
+        },
+        {
+          "type": "type_trace_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2082,6 +2210,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -2281,6 +2413,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -2394,6 +2530,10 @@
         },
         {
           "type": "preprocessor_statement",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -2546,6 +2686,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -2633,6 +2777,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -2661,7 +2809,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "array",
@@ -2713,6 +2861,10 @@
         },
         {
           "type": "pair",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -2839,6 +2991,10 @@
             "named": true
           },
           {
+            "type": "range_expression",
+            "named": true
+          },
+          {
             "type": "return",
             "named": false
           },
@@ -2923,6 +3079,10 @@
         },
         {
           "type": "pair",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -3013,6 +3173,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -3093,6 +3257,10 @@
         },
         {
           "type": "pair",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         },
         {
@@ -3224,6 +3392,10 @@
           },
           {
             "type": "preprocessor_statement",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -3601,6 +3773,10 @@
           "named": true
         },
         {
+          "type": "range_expression",
+          "named": true
+        },
+        {
           "type": "runtime_type_check_expression",
           "named": true
         },
@@ -3629,7 +3805,7 @@
     "fields": {
       "body": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "(",
@@ -3729,6 +3905,10 @@
           },
           {
             "type": "preprocessor_statement",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {
@@ -3847,6 +4027,10 @@
           },
           {
             "type": "pair",
+            "named": true
+          },
+          {
+            "type": "range_expression",
             "named": true
           },
           {

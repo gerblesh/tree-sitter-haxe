@@ -25,7 +25,8 @@ module.exports = {
   array: ($) =>
     choice(
       seq('[', commaSep(prec.left($.expression)), ']'),
-      seq('[', $.expression, $.identifier, ']'), //array comprehension
+      seq('[', $.for_statement,prec.right($.expression), ']'), //array comprehension
+      seq('[', $.while_statement, prec.right($.expression), ']'), //array comprehension
     ),
 
   // https://haxe.org/manual/expression-map-declaration.html

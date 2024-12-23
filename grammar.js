@@ -161,17 +161,17 @@ const haxe_grammar = {
       seq(
         'for',
         '(',
-        field('range', $.range_expression),
+          seq(choice($.pair, $.identifier), 'in', choice($._parenthesized_expression, $.identifier, $.range_expression)),
         ')',
-        field('body', $.statement),
+        optional(field('body', $.statement)),
       ),
 
     range_expression: ($) =>
-      prec(
-        1,
-        choice(
-          seq($.identifier, 'in', choice(seq($.integer, $._rangeOperator, $.integer), $.identifier, $.expression)),
-          seq($.pair, 'in', choice($.identifier, $.expression)),
+      prec(2,
+        seq(
+          choice($._parenthesized_expression, $.integer),
+          $._rangeOperator,
+          choice($._parenthesized_expression, $.integer),
         )
       ),
 
@@ -184,6 +184,7 @@ const haxe_grammar = {
         $.type_trace_expression,
         $._parenthesized_expression,
         $.switch_expression,
+        $.range_expression,
         // simple expression, or chained.
         seq($._rhs_expression, repeat(seq($.operator, $._rhs_expression))),
         seq('return', optional($._rhs_expression)),
@@ -286,12 +287,11 @@ const haxe_grammar = {
       ),
     ),
 
-    while_statement: ($) => prec.right(seq(
+    while_statement: ($) => seq(
         'while',
         field('condition', $._parenthesized_expression),
-        field('body', $.statement),
+        optional(field('body', $.statement)),
       ),
-    ),
 
     do_while_statement: ($) => prec.right(seq(
         'do',
